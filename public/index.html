@@ -4,44 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Public Utility Invoice Generator</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            max-width: 400px;
-            background-color: #f9f9f9;
-        }
-        h1 {
-            text-align: center;
-        }
-        label {
-            display: block;
-            margin-top: 10px;
-        }
-        input[type="text"], input[type="number"], input[type="date"] {
-            width: 100%;
-            padding: 8px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        button {
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            width: 100%;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    <link rel="stylesheets" href="./css/style.css" />
 </head>
 <body>
     <h1>Invoice Generator</h1>
@@ -68,9 +31,8 @@
             const name = document.getElementById('name').value;
             const utilityType = document.getElementById('utilityType').value;
             const amount = parseFloat(document.getElementById('amount').value);
-            const dueDateInput = document.getElementById('dueDate').value; // Gets the date in yyyy-mm-dd format
-
-            // Send the data to the server
+            const dueDateInput = document.getElementById('dueDate').value;
+            
             const response = await fetch('/api/invoices/generate', {
                 method: 'POST',
                 headers: {
@@ -80,7 +42,7 @@
                     name,
                     utilityType,
                     amount,
-                    dueDate: dueDateInput, // This is already in the correct format
+                    dueDate: dueDateInput,
                 }),
             });
 

@@ -15,16 +15,14 @@ exports.generateInvoice = async (req, res) => {
     try {
         const pdfBuffer = await pdfService.createInvoicePDF({ name, utilityType, amount, dueDate });
 
-        // Set headers to force download of PDF
         res.set({
             'Content-Type': 'application/pdf',
             'Content-Disposition': `attachment; filename=${name}-invoice.pdf`
         });
 
-        // Send the PDF buffer as response
         res.send(pdfBuffer);
     } catch (error) {
-        console.error("Error generating invoice:", error.message, error.stack); // Log message and stack trace
+        console.error("Error generating invoice:", error.message, error.stack);
         res.status(500).send('Error generating invoice');
     }       
 };

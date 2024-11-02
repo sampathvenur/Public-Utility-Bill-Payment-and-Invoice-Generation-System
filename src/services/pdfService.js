@@ -12,11 +12,10 @@ exports.createInvoicePDF = ({ name, utilityType, amount, dueDate }) => {
         });
 
         doc.on('error', (err) => {
-            console.error("PDF generation error:", err); // Log PDF generation error
+            console.error("PDF generation error:", err);
             reject(err);
         });
 
-        // PDF content
         doc.fontSize(18).text('Public Utility Invoice', { align: 'center' });
         doc.moveDown();
         doc.fontSize(12)
