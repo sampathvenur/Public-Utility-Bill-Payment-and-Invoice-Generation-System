@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Sampath Kumar",
+    "utilityType": "Electricity",
+    "amount": 140,
+    "dueDate": "2024-10-31",
+    "createdAt": "2024-11-05T16:45:48.738Z"
+  },
+  {
+    "name": "Lord Ganesha",
+    "utilityType": "Electricity",
+    "amount": 140,
+    "dueDate": "2024-10-31",
+    "createdAt": "2024-11-05T16:46:32.628Z"
+  }
+]
