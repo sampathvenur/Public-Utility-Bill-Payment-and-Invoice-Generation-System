@@ -11,6 +11,7 @@
   "description": "",
   "dependencies": {
     "express": "^4.21.1",
+    "fs": "^0.0.1-security",
     "pdfkit": "^0.15.1"
   }
 }

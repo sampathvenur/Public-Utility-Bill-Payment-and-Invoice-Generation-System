@@ -3,6 +3,10 @@ const invoiceRoutes = require('./routes/invoiceRoutes');
 
 const app = express();
 
+const paymentRoutes = require('./routes/paymentRoutes');
+app.use('/api', paymentRoutes);
+
+
 // Middleware to parse JSON bodies
 app.use(express.json());
 // Middleware to serve static files

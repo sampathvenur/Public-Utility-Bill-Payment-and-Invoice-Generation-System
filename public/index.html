@@ -4,25 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Public Utility Invoice Generator</title>
-    <link rel="stylesheets" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/style.css" />
 </head>
 <body>
-    <h1>Invoice Generator</h1>
-    <form id="invoice-form">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
+    <div class="container">
+        <h1>Invoice Generator</h1>
+        <form id="invoice-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
 
-        <label for="utilityType">Utility Type:</label>
-        <input type="text" id="utilityType" name="utilityType" required>
+            <label for="utilityType">Utility Type:</label>
+            <select id="utilityType" name="utilityType" required>
+                <option value="">Select Utility Type</option>
+                <option value="Electricity">Electricity</option>
+                <option value="Water">Water</option>
+                <option value="Gas">Gas</option>
+            </select>
 
-        <label for="amount">Amount Due:</label>
-        <input type="number" id="amount" name="amount" step="0.01" required>
+            <label for="amount">Amount Due:</label>
+            <input type="number" id="amount" name="amount" step="0.01" required>
 
-        <label for="dueDate">Due Date:</label>
-        <input type="date" id="dueDate" name="dueDate" required>
+            <label for="dueDate">Due Date:</label>
+            <input type="date" id="dueDate" name="dueDate" required>
 
-        <button type="submit">Generate Invoice</button>
-    </form>
+            <button type="submit">Generate Invoice</button>
+        </form>
+        <div id="message" class="message"></div>
+    </div>
 
     <script>
         document.getElementById('invoice-form').onsubmit = async function (event) {
@@ -56,8 +64,10 @@
                 document.body.appendChild(a);
                 a.click();
                 a.remove();
+                document.getElementById('message').textContent = 'Invoice generated successfully!';
             } else {
                 console.error('Failed to generate invoice:', response.statusText);
+                document.getElementById('message').textContent = 'Failed to generate invoice. Please try again.';
             }
         };
     </script>
