@@ -1,13 +1,7 @@
 const express = require('express');
 const { Queue, PriorityQueue } = require('../services/queueService');
-
 const router = express.Router();
-
-// const transactionHistory = require('../services/transactionService');
-
 const { transactionHistory, processPayment } = require('../services/transactionService');
-
-
 // Initialize queues
 const regularQueue = new Queue();
 const urgentQueue = new PriorityQueue();
@@ -60,11 +54,6 @@ router.post('/process', async (req, res) => {
         res.status(500).json({ message: 'Error processing payment', error: error.message });
     }
 });
-
-
-
-
-
 
 router.get('/transactions', (req, res) => {
     const transactions = transactionHistory.getTransactions();

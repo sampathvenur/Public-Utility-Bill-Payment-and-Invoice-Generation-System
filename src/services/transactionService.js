@@ -1,11 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 const PDFDocument = require('pdfkit');
-// const path = require('path');
 const csvFilePath = path.join(__dirname, '../logs/daily_transactions.csv');
 const overdueFilePath = path.join(__dirname, '../logs/overdue_payments.json');
-
-// Define the path for transaction records
 const transactionFilePath = path.join(__dirname, '../data/transactionRecords.json');
 
 class Stack {
@@ -46,7 +43,7 @@ async function processPayment(request) {
         setTimeout(() => {
             console.log(`Processed payment for ${request.service} - Amount: ${request.amount}`);
             resolve();
-        }, 2000); // Simulates a 2-second delay in processing
+        }, 2000);
     });
 }
 
@@ -108,7 +105,7 @@ async function generatePDFInvoice(transaction) {
     });
 }
 
-// Function to log transaction details in .csv format
+// Function to log transaction details in .json format
 async function logTransactionToCSV(transaction) {
     const csvData = `${transaction.id},${transaction.userId},${transaction.utilityType},${transaction.amount},${transaction.date}\n`;
 
@@ -161,13 +158,8 @@ async function logOverdueTransaction(transaction) {
 // Export an instance of the Stack
 const transactionHistory = new Stack();
 module.exports = transactionHistory;
-
 module.exports = { transactionHistory, processPayment };
-
 module.exports = { transactionHistory, processPayment, saveTransactionToFile };
-
 module.exports = { transactionHistory, processPayment, saveTransactionToFile, generatePDFInvoice };
-
 module.exports = { transactionHistory, processPayment, saveTransactionToFile, generatePDFInvoice, logTransactionToCSV };
-
 module.exports = { transactionHistory, processPayment, saveTransactionToFile, generatePDFInvoice, logTransactionToCSV, logOverdueTransaction };
